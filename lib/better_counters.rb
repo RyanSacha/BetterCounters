@@ -14,6 +14,19 @@ module BetterCounters
   end
 
   module ClassMethods
+    # *Enable counter caching*
+    #
+    # Takes a +Hash+ where keys are the association singular name, and the values are either true or a custom counter column name.
+    #
+    # Example:
+    #   >> counter_cache :user => true
+    #
+    # You can override the counter column name by replacing true with the name.
+    #   >> counter_cache :user => :total_tasks
+    #
+    # Arguments
+    # p: (Hash)
+
     def counter_cache(p)
       after_create  Proc.new { update_cache_counters(p, 1) }
       after_destroy Proc.new { update_cache_counters(p, -1) }
