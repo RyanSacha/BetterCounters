@@ -47,7 +47,7 @@ You can override the default column name with your own:
 
 * * *
 
-![God of the Internet][http://i.imgur.com/ETKp5.jpg]
+![God of the Internet](http://i.imgur.com/ETKp5.jpg)
 
 * * *
 
