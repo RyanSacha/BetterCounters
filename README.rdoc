@@ -1,7 +1,7 @@
-Better Counters
+# Better Counters
 ==============
 
-**Description**
+### Description
 
 Counter cache is a great feature in Rails to improve records counting performance by caching that number in a column.
 
@@ -9,17 +9,17 @@ Unfortunately it is tied to `belongs_to`, Many times i had to create similar cus
 
 Here comes Better Counters with an independent syntax.
 
-**Installation**
+### Installation
 
 In your Gemfile add this line:
 
-`gem 'better_counters'`
+    $ gem 'better_counters'
 
-**Usage**
+### Usage
 
 First you need to create a migration and add a counter column, like `tasks_count`.
 
-`rails g migration AddTasksCountToUsers tasks_count:integer`
+    $ rails g migration AddTasksCountToUsers tasks_count:integer
 
 Then simply on your model add the method `counter_cache` with a hash of models to keep the count column in.
 
@@ -37,17 +37,21 @@ You will no longer have to use the slow `@user.tasks.count`
 
 You can use the counter cache in multiple models as long as they all have a counter column.
 
-`counter_cache :user => true, :project => true` 
+    $ counter_cache :user => true, :project => true
 
-**Custom counter column names**
+### Custom counter column names
 
 You can override the default column name with your own:
 
-`counter_cache :user => :total_tasks`
+    $ counter_cache :user => :total_tasks
 
-______________________________________________________________
+* * *
 
-*Contributing to better_counters*
+![God of the Internet][http://i.imgur.com/ETKp5.jpg]
+
+* * *
+
+### Contributing to better_counters*
  
 * Check out the latest master to make sure the feature hasn't been implemented or the bug hasn't been fixed yet.
 * Check out the issue tracker to make sure someone already hasn't requested it and/or contributed it.
