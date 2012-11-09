@@ -7,8 +7,7 @@ module BetterCounters
     p.each do |c|
       if c[1]
         column = (c[1] == true) ? self.class.table_name + "_count" : c[1]
-        n > 0 ? send(c[0]).increment(column, 1) : send(c[0]).decrement(column, 1)
-        send(c[0]).save
+        n > 0 ? send(c[0]).increment!(column) : send(c[0]).decrement!(column)
       end
     end
   end
