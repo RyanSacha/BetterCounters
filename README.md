@@ -17,9 +17,27 @@ In your Gemfile add this line:
 
 ### Usage
 
+In the following examples, we assume that we have a model `User` that has many `Project`s and many `Task`s through projects, and we'd like to cache the tasks count on the `User` model.
+
 First you need to create a migration and add a counter column, like `tasks_count`.
 
-    rails g migration AddTasksCountToUsers tasks_count:integer
+    rails g migration AddTasksCountToUsers
+
+Open up the generated migration file located at `/db/migrate/XXXXX.rb` and replace the content with the following:
+
+    def self.up
+      add_column :users, :tasks_count, :integer, :default => 0
+
+      # Fill in the new cache column with each user's tasks count
+      User.reset_column_information
+      User.find(:all).each do |p|
+        User.update_counters p.id, :tasks_count => p.tasks.count
+      end
+    end
+
+    def self.down
+      remove_column :user, :tasks_count
+    end
 
 Then simply on your model add the method `counter_cache` with a hash of models to keep the count column in.
 
