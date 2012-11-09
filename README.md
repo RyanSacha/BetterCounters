@@ -23,7 +23,7 @@ First you need to create a migration and add a counter column, like `tasks_count
 
     rails g migration AddTasksCountToUsers
 
-Open up the generated migration file located at `/db/migrate/XXXXX.rb` and replace the content with the following:
+Open up the generated migration file located at `/db/migrate/XXXXX.rb` and replace the content with something like:
 
     def self.up
       add_column :users, :tasks_count, :integer, :default => 0
@@ -38,6 +38,8 @@ Open up the generated migration file located at `/db/migrate/XXXXX.rb` and repla
     def self.down
       remove_column :user, :tasks_count
     end
+
+Run `rake db:migrate`
 
 Then simply on your model add the method `counter_cache` with a hash of models to keep the count column in.
 
