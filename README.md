@@ -3,9 +3,9 @@
 
 ### Description
 
-Counter cache is a great feature in Rails to improve records counting performance by caching the number in a column.
+Counter cache is a great feature in Rails ActiveRecord to improve counting performance of a model's child associations by caching the number in a column.
 
-Unfortunately it is tied to `belongs_to`, Many times i had to create similar custom methods from scratch just to work with `delegate` or simply models or shortcut methods that aren't associated through `belongs_to`
+Unfortunately it is tied to `belongs_to`, Many times i had to create similar custom methods from scratch just to work with `delegate` or simply shortcut methods or models that aren't associated through `belongs_to`
 
 Here comes Better Counters with an independent syntax.
 
@@ -14,6 +14,8 @@ Here comes Better Counters with an independent syntax.
 In your Gemfile add this line:
 
     gem 'better_counters'
+
+Run `bundle install`
 
 ### Usage
 

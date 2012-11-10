@@ -3,7 +3,7 @@ require "better_counters/version"
 module BetterCounters
   extend ActiveSupport::Concern
 
-  def update_cache_counters(p = {}, n = 1)
+  def update_counter_cache(p = {}, n = 1)
     p.each do |c|
       if c[1]
         column = (c[1] == true) ? self.class.table_name + "_count" : c[1]
@@ -27,8 +27,8 @@ module BetterCounters
     # p: (Hash)
 
     def counter_cache(p)
-      after_create  Proc.new { update_cache_counters(p, 1) }
-      after_destroy Proc.new { update_cache_counters(p, -1) }
+      after_create  Proc.new { update_counter_cache(p, 1) }
+      after_destroy Proc.new { update_counter_cache(p, -1) }
     end
   end
 end
